@@ -1,3 +1,5 @@
+![build status](https://travis-ci.org/finkf/gocropus.svg?branch=master)
+
 # gocropus
 Small utility library for working with line segmented images for OCR
 used by [ocropy](https://github.com/tmbdev/ocropy) etc.
