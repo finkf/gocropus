@@ -171,7 +171,7 @@ func LLocsFromStripped(p string, stat bool) (string, bool) {
 // WalkFunc defines the type for the callback function used in Walk.
 // It is called with the paths of the existing Ocropy file image
 // set. The first path is the gt, the second path is the img, the
-// third path is the txt and the fourth path is the llocs fiel path.
+// third path is the txt and the fourth path is the llocs file path.
 // If any file path does not exist the according value is set to the
 // empty string "".
 type WalkFunc func(string, string, string, string) error
