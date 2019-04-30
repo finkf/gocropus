@@ -1,10 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 marg=""
 for arg in $*; do
-	if [ "$arg" == "--model" ]; then
+	if [[ "$arg" == "--model" ]]; then
 		marg="yes"
-	elif [ "$marg" == "yes" ]; then
+	elif [[ "$marg" == "yes" ]]; then
 		echo "$arg"
 		exit 0
 	fi
