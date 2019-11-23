@@ -146,12 +146,12 @@ const (
 	NrmPngExt = ".nrm.png" /* GT4HistOCR */
 )
 
-// ImageFromStripped returns the according line image file for the
+// ImageFromFile returns the according line image file for the
 // given stripped or unstripped path and whether it exists.  In order
 // to identify the right extension, the file path is checked with
 // stat.  If no existing image file path can be found this function
 // returns "", false.
-func ImageFromStripped(stripped string) (string, bool) {
+func ImageFromFile(stripped string) (string, bool) {
 	for _, ext := range ImageExtensions {
 		p := stripped + ext
 		if isFile(p) {
@@ -161,30 +161,30 @@ func ImageFromStripped(stripped string) (string, bool) {
 	return "", false
 }
 
-// GTFromStripped returns the according gt file for the given stripped
+// GTFromFile returns the according gt file for the given stripped
 // or unstripped path and whether it exists.  If stat is set to false,
 // just the according gt path and false are returend; it is not
 // checked in this case if the resulting file path exists.  In any
 // case the according gt file path is returned.
-func GTFromStripped(p string, stat bool) (string, bool) {
+func GTFromFile(p string, stat bool) (string, bool) {
 	return checkStrippedWithExt(p, GTExt, stat)
 }
 
-// TxtFromStripped returns the according txt file for the given
+// TxtFromFile returns the according txt file for the given
 // stripped or unstripped path and whether it exists.  If stat is set
 // to false, just the according gt path and false are returend; it is
 // not checked in this case if the resulting file path exists.  In any
 // case the according txt file path is returned.
-func TxtFromStripped(p string, stat bool) (string, bool) {
+func TxtFromFile(p string, stat bool) (string, bool) {
 	return checkStrippedWithExt(p, TxtExt, stat)
 }
 
-// LLocsFromStripped returns the according llocs file for the given
+// LLocsFromFile returns the according llocs file for the given
 // stripped path and whether it exists.  If stat is set to false, just
 // the according gt path and false are returend; it is not checked in
 // this case if the resulting file path exists.  In any case the
 // according llocs file path is returned.
-func LLocsFromStripped(p string, stat bool) (string, bool) {
+func LLocsFromFile(p string, stat bool) (string, bool) {
 	return checkStrippedWithExt(p, LLocsExt, stat)
 }
 
@@ -219,10 +219,10 @@ func Walk(dir, ext string, recursive bool, f WalkFunc) error {
 		}
 		// we have a valid file; check for the other files of the set
 		s := Strip(p)
-		gt := pathString(GTFromStripped(s, true))
-		img := pathString(ImageFromStripped(s))
-		txt := pathString(TxtFromStripped(s, true))
-		llocs := pathString(LLocsFromStripped(s, true))
+		gt := pathString(GTFromFile(s, true))
+		img := pathString(ImageFromFile(s))
+		txt := pathString(TxtFromFile(s, true))
+		llocs := pathString(LLocsFromFile(s, true))
 		return f(gt, img, txt, llocs)
 	})
 	return err

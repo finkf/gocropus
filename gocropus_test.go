@@ -173,7 +173,7 @@ func TestStrip(t *testing.T) {
 	}
 }
 
-func TestImageFromStripped(t *testing.T) {
+func TestImageFromFile(t *testing.T) {
 	tests := []struct {
 		test, want string
 		ok         bool
@@ -187,7 +187,7 @@ func TestImageFromStripped(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.test, func(t *testing.T) {
-			got, ok := ImageFromStripped(tc.test)
+			got, ok := ImageFromFile(tc.test)
 			if got != tc.want || ok != tc.ok {
 				t.Fatalf("expected (%q,%t); got (%q,%t)",
 					tc.want, tc.ok, got, ok)
@@ -196,7 +196,7 @@ func TestImageFromStripped(t *testing.T) {
 	}
 }
 
-func TestGTFromStripped(t *testing.T) {
+func TestGTFromFile(t *testing.T) {
 	tests := []struct {
 		test, want string
 		stat, ok   bool
@@ -216,7 +216,7 @@ func TestGTFromStripped(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.test, func(t *testing.T) {
-			got, ok := GTFromStripped(tc.test, tc.stat)
+			got, ok := GTFromFile(tc.test, tc.stat)
 			if got != tc.want || ok != tc.ok {
 				t.Fatalf("expected (%q,%t); got (%q,%t)",
 					tc.want, tc.ok, got, ok)
@@ -225,7 +225,7 @@ func TestGTFromStripped(t *testing.T) {
 	}
 }
 
-func TestTxtLocsFromStripped(t *testing.T) {
+func TestTxtLocsFromFile(t *testing.T) {
 	tests := []struct {
 		test, want string
 		stat, ok   bool
@@ -245,7 +245,7 @@ func TestTxtLocsFromStripped(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.test, func(t *testing.T) {
-			got, ok := TxtFromStripped(tc.test, tc.stat)
+			got, ok := TxtFromFile(tc.test, tc.stat)
 			if got != tc.want || ok != tc.ok {
 				t.Fatalf("expected (%q,%t); got (%q,%t)",
 					tc.want, tc.ok, got, ok)
@@ -254,7 +254,7 @@ func TestTxtLocsFromStripped(t *testing.T) {
 	}
 }
 
-func TestLLocsFromStripped(t *testing.T) {
+func TestLLocsFromFile(t *testing.T) {
 	tests := []struct {
 		test, want string
 		stat, ok   bool
@@ -274,7 +274,7 @@ func TestLLocsFromStripped(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.test, func(t *testing.T) {
-			got, ok := LLocsFromStripped(tc.test, tc.stat)
+			got, ok := LLocsFromFile(tc.test, tc.stat)
 			if got != tc.want || ok != tc.ok {
 				t.Fatalf("expected (%q,%t); got (%q,%t)",
 					tc.want, tc.ok, got, ok)
