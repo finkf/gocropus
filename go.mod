@@ -1,3 +1,3 @@
-module sr.ht/~flobar/gocropus
+module git.sr.ht/~flobar/gocropus
 
 go 1.12
