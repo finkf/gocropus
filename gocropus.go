@@ -125,7 +125,9 @@ func Strip(p string) string {
 }
 
 // ImageExtensions defines the different possible extensions for line
-// image files.
+// image files.  The order of the extensions defines which files are
+// used for image files.  Change this if you need other image file
+// priorities.
 var ImageExtensions = []string{
 	BinPngExt,
 	DewPngExt,
