@@ -1,3 +1,3 @@
-module github.com/finkf/gocropus
+module sr.ht/~flobar/gocropus
 
 go 1.12
