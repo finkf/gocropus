@@ -1,0 +1,9 @@
+image: alpine/edge
+packages:
+- go
+sources:
+- https://git.sr.ht/~flobar/gocropus
+tasks:
+  - test: |
+      cd gocropus
+      go test -cover
