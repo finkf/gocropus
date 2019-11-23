@@ -92,6 +92,46 @@ func TestOpenLLocsFileString(t *testing.T) {
 	}
 }
 
+func TestOpenLLocsFileCuts(t *testing.T) {
+	tests := []struct {
+		test string
+		want []int
+	}{
+		{"testdata/00003.llocs", []int{60, 77, 91, 107, 121, 143}},
+	}
+	for _, tc := range tests {
+		t.Run(tc.test, func(t *testing.T) {
+			llocs, err := OpenLLocsFile(tc.test)
+			if err != nil {
+				t.Fatalf("got error: %v", err)
+			}
+			if got := llocs.Cuts(); !reflect.DeepEqual(tc.want, got) {
+				t.Fatalf("expected %v; got %v", tc.want, got)
+			}
+		})
+	}
+}
+
+func TestOpenLLocsFileConfs(t *testing.T) {
+	tests := []struct {
+		test string
+		want []float32
+	}{
+		{"testdata/00003.llocs", make([]float32, 6)},
+	}
+	for _, tc := range tests {
+		t.Run(tc.test, func(t *testing.T) {
+			llocs, err := OpenLLocsFile(tc.test)
+			if err != nil {
+				t.Fatalf("got error: %v", err)
+			}
+			if got := llocs.Confs(); !reflect.DeepEqual(tc.want, got) {
+				t.Fatalf("expected %v; got %v", tc.want, got)
+			}
+		})
+	}
+}
+
 func TestOpenImgFile(t *testing.T) {
 	tests := []struct {
 		test    string

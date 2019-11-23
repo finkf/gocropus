@@ -28,6 +28,24 @@ func (l LLocs) String() string {
 	return string(wstr)
 }
 
+// Cuts returns the right cuts of the llocs as int array.
+func (l LLocs) Cuts() []int {
+	cuts := make([]int, len(l))
+	for i := range l {
+		cuts[i] = int(l[i].Cut)
+	}
+	return cuts
+}
+
+// Confs returns the confidences as an array.
+func (l LLocs) Confs() []float32 {
+	confs := make([]float32, len(l))
+	for i := range l {
+		confs[i] = l[i].Conf
+	}
+	return confs
+}
+
 // OpenLLocsFile opens a llocs file and returns its contents.
 func OpenLLocsFile(path string) (LLocs, error) {
 	in, err := os.Open(path)
